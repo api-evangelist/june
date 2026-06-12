@@ -1,0 +1,107 @@
+aid: june
+name: June
+description: >
+  June is a product analytics platform purpose-built for B2B SaaS companies,
+  providing company-level and user-level analytics focused on key SaaS metrics
+  such as activation, retention, and feature adoption. The platform offers a
+  REST-based Tracking API compatible with the Segment protocol, enabling teams
+  to identify users, track events, group users into companies, and record page
+  views. June also provides server-side SDKs for Node.js, Python, and Ruby, as
+  well as client-side JavaScript and React/Next.js libraries. An Embed API
+  (available as a Pro Plan add-on) allows embedding June dashboards directly
+  into customer-facing products, and a Data Deletions API supports GDPR
+  compliance by enabling deletion of user and workspace data.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Analytics
+  - Product Analytics
+  - B2B SaaS
+  - Event Tracking
+  - Segment Compatible
+  - Retention
+  - Feature Adoption
+  - Activation
+url: https://raw.githubusercontent.com/api-evangelist/june/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+apis:
+  - aid: june:tracking-api
+    name: June Tracking API
+    description: >
+      REST API for sending user behaviour data to June, including user
+      identification, event tracking, company grouping, and page view
+      recording. Uses Basic Authentication with a workspace write key.
+      The API base is https://api.june.so/sdk/ and is compatible with
+      the Segment tracking protocol.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.june.so/docs/tracking/http-api/authentication
+    baseURL: https://api.june.so/sdk
+    tags:
+      - Event Tracking
+      - Identify
+      - Group
+      - Page Views
+    properties:
+      - type: Documentation
+        url: https://www.june.so/docs/tracking/http-api/authentication
+  - aid: june:embed-api
+    name: June Embed API
+    description: >
+      Pro Plan add-on API that allows embedding June analytics dashboards
+      directly into customer-facing products, enabling teams to surface
+      product metrics for individual accounts within their own applications.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://help.june.so/en/articles/9832226-api-documentation
+    baseURL: https://api.june.so
+    tags:
+      - Embed
+      - Dashboards
+      - White Label
+    properties:
+      - type: Documentation
+        url: https://help.june.so/en/articles/9832226-api-documentation
+  - aid: june:data-deletions-api
+    name: June Data Deletions API
+    description: >
+      API for managing data within the June platform, including the ability
+      to delete users and workspaces to support GDPR and privacy compliance
+      requirements.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://help.june.so/en/articles/9832226-api-documentation
+    baseURL: https://api.june.so
+    tags:
+      - GDPR
+      - Data Deletion
+      - Privacy
+      - Compliance
+    properties:
+      - type: Documentation
+        url: https://help.june.so/en/articles/9832226-api-documentation
+common:
+  - type: Website
+    url: https://www.june.so/
+  - type: Documentation
+    url: https://www.june.so/docs
+  - type: GitHubOrganization
+    url: https://github.com/juneHQ
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/juneso
+  - type: X
+    url: https://x.com/juneDotSo
+  - type: Blog
+    url: https://www.june.so/blog
+  - type: Changelog
+    url: https://changelog.june.so
+  - type: Pricing
+    url: https://www.june.so/pricing
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/june/refs/heads/main/plans/june-plans-pricing.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/june/refs/heads/main/rate-limits/june-rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/june/refs/heads/main/finops/june-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

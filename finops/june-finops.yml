@@ -1,0 +1,68 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: June
+providerId: june
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >
+  June uses an MAU-based (Monthly Active Users) billing model for its product
+  analytics platform. All platform features are bundled into a single plan tier
+  with pricing determined by the number of authenticated users active each
+  month. The Embed API is available as a separately priced add-on.
+billingModel:
+  type: subscription
+  basis: monthly_active_users
+  description: >
+    Subscription pricing scaled by the number of unique authenticated users
+    who perform actions in the product per month. Anonymous users are excluded
+    from MAU counts. Pricing requires custom quotes from June sales.
+  addOns:
+    - name: Embed API
+      description: Dashboard embedding capability for customer-facing products
+      billing: contact-sales
+focusColumns:
+  - ChargeCategory: Usage
+  - ServiceName: June Product Analytics
+  - ServiceSubcategory: Event Tracking
+  - ResourceType: MonthlyActiveUser
+  - PricingUnit: MAU/month
+  - BilledCurrency: USD
+  - InvoiceIssuerName: June (Amplitude)
+meters:
+  - name: Monthly Active Users
+    unit: user
+    description: >
+      Unique authenticated users who log in or perform any tracked action
+      within a given calendar month. Anonymous users are not counted.
+    granularity: monthly
+    dimensions:
+      - workspace
+    pricingModel: tiered-contact-sales
+  - name: Embed API Usage
+    unit: request
+    description: >
+      API requests to the Embed API for rendering embedded June dashboards
+      in external applications. Available as a Pro Plan add-on.
+    granularity: monthly
+    dimensions:
+      - workspace
+    pricingModel: contact-sales
+principles:
+  - name: Visibility
+    description: >
+      June provides MAU-based billing transparency so teams can understand
+      cost drivers. MAU counts reflect only authenticated user activity,
+      giving engineering and finance teams clear signal on what drives spend.
+    practices:
+      - Monitor monthly active user counts to forecast billing
+      - Distinguish authenticated vs. anonymous user traffic to manage costs
+      - Review which user cohorts are counted as MAUs each billing period
+  - name: Optimization
+    description: >
+      Optimize June spend by managing the scope of tracked authenticated users
+      and negotiating MAU tiers based on actual product usage patterns.
+    practices:
+      - Audit user tracking instrumentation to avoid over-counting MAUs
+      - Negotiate annual contracts for predictable MAU-based pricing
+      - Evaluate Embed API add-on ROI based on customer-facing dashboard usage
+      - Consider Segment source integration to consolidate event pipelines

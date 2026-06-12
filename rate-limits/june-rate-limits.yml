@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: June
+providerId: june
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >
+  June does not publicly document specific rate limit thresholds for its
+  Tracking API or other endpoints. The API uses HTTP 429 status codes for
+  throttling when limits are exceeded. Consumers should implement exponential
+  backoff and use the Retry-After header when present. Rate limits may vary
+  by plan tier and MAU count.
+headers:
+  retryAfter: true
+  retryAfterHeader: Retry-After
+responseCodes:
+  throttled: 429
+  success: 200
+limits:
+  - scope: workspace
+    metric: tracking_events
+    description: >
+      Event ingestion rate limit per workspace. Specific thresholds are not
+      publicly documented; contact June support for details on limits
+      applicable to your account.
+    limit: unspecified
+    timeFrame: per_minute
+    note: Contact June support for workspace-specific limit information
+  - scope: workspace
+    metric: embed_api_requests
+    description: >
+      Requests to the Embed API (Pro Plan add-on). Specific rate limits are
+      not publicly documented.
+    limit: unspecified
+    timeFrame: per_minute
+    note: Pro Plan add-on; contact June support for rate limit details
+  - scope: workspace
+    metric: data_deletion_requests
+    description: >
+      Requests to the Data Deletions API for removing user and workspace data.
+      Specific rate limits are not publicly documented.
+    limit: unspecified
+    timeFrame: per_day
+    note: Contact June support for rate limit details
+authentication:
+  type: Basic
+  description: >
+    HTTP Basic Authentication using a write key obtained from workspace
+    settings. The write key is passed as the username in the Authorization
+    header: Authorization: Basic <base64(write_key:)>
+  headerName: Authorization
+  headerFormat: 'Basic {base64_encoded_write_key}'

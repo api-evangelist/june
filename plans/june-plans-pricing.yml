@@ -1,0 +1,82 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: June
+providerId: june
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+description: >
+  June pricing is MAU-based (Monthly Active Users) on a single all-inclusive
+  plan tier. All features are included; pricing is customized based on MAU
+  count and requires contacting sales. The Embed API is available as a Pro
+  Plan add-on. A free trial is available.
+plans:
+  - name: Free Trial
+    type: free
+    description: >
+      Time-limited free trial providing access to the full June platform to
+      evaluate the product before committing to a paid plan.
+    url: https://www.june.so/pricing
+    quotas:
+      - type: boolean
+        name: Free Trial Access
+        description: Full platform access during trial period
+        enabled: true
+  - name: MAU-Based Plan
+    type: paid
+    description: >
+      Single all-inclusive plan priced based on monthly active users (MAU).
+      MAUs are unique users who log in or perform actions during a given month;
+      anonymous users are not counted. Pricing requires contacting sales with
+      current MAU count for a custom quote.
+    url: https://www.june.so/pricing
+    contact: https://www.june.so/pricing
+    quotas:
+      - type: boolean
+        name: Company-Level Analytics
+        description: Track and analyze product usage at the company/account level
+        enabled: true
+      - type: boolean
+        name: Product Analytics
+        description: User-level event tracking, funnels, retention, and feature adoption
+        enabled: true
+      - type: boolean
+        name: CRM Integrations
+        description: Salesforce, HubSpot, and Attio integrations included
+        enabled: true
+      - type: boolean
+        name: Stripe Integration
+        description: Revenue data integration via Stripe
+        enabled: true
+      - type: boolean
+        name: Custom SQL & AI Insights
+        description: Query your data with SQL and AI-powered insights
+        enabled: true
+      - type: boolean
+        name: Computed Traits
+        description: Define and compute custom user and company traits
+        enabled: true
+      - type: boolean
+        name: Company and Audience Alerts
+        description: Alerts for company and audience segment changes
+        enabled: true
+      - type: boolean
+        name: 1:1 Support and Onboarding
+        description: Dedicated support and onboarding assistance
+        enabled: true
+      - type: metered
+        name: Monthly Active Users
+        description: >
+          Pricing scales with the number of unique authenticated users who
+          perform actions in the product each month. Anonymous users excluded.
+        metric: monthly_active_users
+        unit: user
+        price: contact-sales
+      - type: boolean
+        name: Embed API (Add-on)
+        description: >
+          Pro Plan add-on allowing June dashboards to be embedded in
+          customer-facing products. Requires requesting access separately.
+        enabled: false
+        addOn: true
+        contact: https://www.june.so/pricing
