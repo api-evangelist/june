@@ -1,0 +1,14 @@
+{
+  "userId": "user_12345",
+  "event": "Feature Used",
+  "properties": {
+    "feature": "CSV Export",
+    "plan": "pro"
+  },
+  "context": {
+    "groupId": "company_67890",
+    "ip": "203.0.113.42",
+    "locale": "en-US"
+  },
+  "timestamp": "2026-06-12T10:00:00Z"
+}

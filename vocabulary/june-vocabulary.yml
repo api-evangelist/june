@@ -1,0 +1,84 @@
+vocabulary:
+  - term: userId
+    definition: >
+      The unique identifier for a user in the customer's database. Used to
+      associate tracking events, identifications, and group memberships with
+      a specific user. At least one of userId or anonymousId must be supplied
+      on every API call.
+
+  - term: anonymousId
+    definition: >
+      A generated identifier used to track a user before their identity is
+      known (e.g., before sign-up or login). At least one of userId or
+      anonymousId must be supplied on every API call.
+
+  - term: groupId
+    definition: >
+      The unique identifier for a company or group in the customer's database.
+      Used with the /group endpoint to associate users with companies, and in
+      the context object on track/page calls to scope events to a company.
+
+  - term: traits
+    definition: >
+      A dictionary of attributes associated with a user (on /identify) or a
+      company (on /group). Common user traits include email, name, and plan.
+      Common company traits include name, industry, and employee count.
+
+  - term: properties
+    definition: >
+      A dictionary of attributes associated with a specific event (on /track)
+      or page view (on /page). Properties add semantic richness to events,
+      enabling filtering and analysis in the June dashboard.
+
+  - term: context
+    definition: >
+      A dictionary of metadata about the environment in which the call is
+      made. Unlike traits, context is not user-specific. Common context fields
+      include groupId, ip, locale, timezone, screen, os, and campaign.
+
+  - term: event
+    definition: >
+      The name of the action a user has taken, passed to the /track endpoint.
+      Event names should be human-readable and descriptive, e.g., "Signed Up",
+      "Feature Used", or "Invoice Paid".
+
+  - term: writeKey
+    definition: >
+      A workspace-scoped credential used for Basic Authentication on all
+      Tracking API calls. Obtained from June workspace settings and provided
+      as the HTTP Basic Auth username.
+
+  - term: activation
+    definition: >
+      A key SaaS metric measured by June representing the moment a user or
+      company first derives meaningful value from the product. June tracks
+      activation funnels based on event sequences.
+
+  - term: retention
+    definition: >
+      A key SaaS metric measuring the percentage of users or companies that
+      continue to use the product over time. June provides company-level and
+      user-level retention analysis.
+
+  - term: featureAdoption
+    definition: >
+      A June analytics concept tracking how widely and frequently specific
+      product features are used across users and companies, surfaced as a
+      dedicated report type in the platform.
+
+  - term: embedAPI
+    definition: >
+      A Pro Plan add-on API that allows embedding June analytics dashboards
+      directly into customer-facing products, enabling account-level metrics
+      visibility within a customer's own application.
+
+  - term: dataDeletionsAPI
+    definition: >
+      An API supporting GDPR and privacy compliance by enabling deletion of
+      user and workspace data from the June platform.
+
+  - term: segmentCompatible
+    definition: >
+      Indicates that the June Tracking API follows the Segment tracking
+      protocol, meaning payloads and endpoint semantics match the Segment
+      spec, enabling easy migration or dual-write scenarios.

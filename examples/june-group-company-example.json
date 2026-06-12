@@ -1,0 +1,12 @@
+{
+  "userId": "user_12345",
+  "groupId": "company_67890",
+  "traits": {
+    "name": "Acme Corp",
+    "industry": "SaaS",
+    "employees": 50,
+    "plan": "enterprise",
+    "website": "https://acme.example.com"
+  },
+  "timestamp": "2026-06-12T10:00:00Z"
+}

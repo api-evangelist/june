@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "june": "https://www.june.so/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "userId": {
+      "@id": "june:userId",
+      "@type": "xsd:string"
+    },
+    "anonymousId": {
+      "@id": "june:anonymousId",
+      "@type": "xsd:string"
+    },
+    "groupId": {
+      "@id": "june:groupId",
+      "@type": "xsd:string"
+    },
+    "writeKey": {
+      "@id": "june:writeKey",
+      "@type": "xsd:string"
+    },
+    "event": {
+      "@id": "june:eventName",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "june:eventProperties"
+    },
+    "traits": {
+      "@id": "june:traits"
+    },
+    "context": {
+      "@id": "june:callContext"
+    },
+    "timestamp": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "path": {
+      "@id": "june:pagePath",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "referrer": {
+      "@id": "june:referrer",
+      "@type": "xsd:string"
+    },
+    "ip": {
+      "@id": "june:ipAddress",
+      "@type": "xsd:string"
+    },
+    "locale": {
+      "@id": "schema:inLanguage",
+      "@type": "xsd:string"
+    },
+    "timezone": {
+      "@id": "june:timezone",
+      "@type": "xsd:string"
+    },
+    "employees": {
+      "@id": "schema:numberOfEmployees",
+      "@type": "xsd:integer"
+    },
+    "industry": {
+      "@id": "schema:industry",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "june:responseStatus",
+      "@type": "xsd:integer"
+    },
+    "success": {
+      "@id": "june:responseSuccess",
+      "@type": "xsd:boolean"
+    },
+
+    "TrackEvent": "june:TrackEvent",
+    "IdentifyCall": "june:IdentifyCall",
+    "GroupCall": "june:GroupCall",
+    "PageView": "june:PageView",
+    "JuneWorkspace": "june:Workspace",
+    "JuneUser": "june:User",
+    "JuneCompany": "june:Company"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/june/main/json-schema/june-track-request-schema.json",
+  "title": "June Track Request",
+  "description": "Request body schema for the June Tracking API /track endpoint.",
+  "type": "object",
+  "required": ["event"],
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "The ID for this user in your database. At least one of userId or anonymousId must be provided."
+    },
+    "anonymousId": {
+      "type": "string",
+      "description": "An ID associated with the user when you do not know who they are."
+    },
+    "event": {
+      "type": "string",
+      "description": "The name of the event you are tracking."
+    },
+    "properties": {
+      "type": "object",
+      "description": "A dictionary of properties for the event.",
+      "additionalProperties": true
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date-time when the track took place. Defaults to server time if omitted."
+    },
+    "context": {
+      "$ref": "#/$defs/context"
+    }
+  },
+  "anyOf": [
+    { "required": ["userId"] },
+    { "required": ["anonymousId"] }
+  ],
+  "$defs": {
+    "context": {
+      "type": "object",
+      "description": "Extra context to attach to the call.",
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "description": "Group or company identifier to associate the event with."
+        },
+        "ip": {
+          "type": "string",
+          "description": "The user's IP address."
+        },
+        "locale": {
+          "type": "string",
+          "description": "The locale of the user, e.g. en-US."
+        },
+        "timezone": {
+          "type": "string",
+          "description": "The user's timezone in tzdata format."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

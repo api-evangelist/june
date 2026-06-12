@@ -1,0 +1,21 @@
+{
+  "userId": "user_12345",
+  "properties": {
+    "url": "https://app.example.com/dashboard",
+    "path": "/dashboard",
+    "title": "Dashboard",
+    "referrer": "https://app.example.com/login",
+    "search": ""
+  },
+  "context": {
+    "groupId": "company_67890",
+    "locale": "en-US",
+    "timezone": "America/New_York",
+    "screen": {
+      "width": 1920,
+      "height": 1080,
+      "density": 2
+    }
+  },
+  "timestamp": "2026-06-12T10:00:00Z"
+}

@@ -46,6 +46,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.june.so/docs/tracking/http-api/authentication
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/june/refs/heads/main/openapi/june-tracking-api-openapi.yml
   - aid: june:embed-api
     name: June Embed API
     description: >

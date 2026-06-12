@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/june/main/json-schema/june-group-request-schema.json",
+  "title": "June Group Request",
+  "description": "Request body schema for the June Tracking API /group endpoint.",
+  "type": "object",
+  "required": ["groupId"],
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "The ID for this user in your database. At least one of userId or anonymousId must be provided."
+    },
+    "anonymousId": {
+      "type": "string",
+      "description": "An ID for the user when identity is unknown."
+    },
+    "groupId": {
+      "type": "string",
+      "description": "The identifier of the company or group."
+    },
+    "traits": {
+      "type": "object",
+      "description": "Group or company attributes such as name, address, or contact information.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the group or company."
+        },
+        "industry": {
+          "type": "string",
+          "description": "The industry of the company."
+        },
+        "employees": {
+          "type": "integer",
+          "description": "Number of employees in the company."
+        }
+      },
+      "additionalProperties": true
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date-time when the group action occurred. Defaults to server time if omitted."
+    },
+    "context": {
+      "type": "object",
+      "description": "Extra context to attach to the call.",
+      "additionalProperties": true
+    }
+  },
+  "anyOf": [
+    { "required": ["userId"] },
+    { "required": ["anonymousId"] }
+  ]
+}
