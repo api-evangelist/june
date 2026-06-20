@@ -12,7 +12,7 @@ description: >
   into customer-facing products, and a Data Deletions API supports GDPR
   compliance by enabling deletion of user and workspace data.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Analytics
   - Product Analytics
@@ -35,7 +35,7 @@ apis:
       recording. Uses Basic Authentication with a workspace write key.
       The API base is https://api.june.so/sdk/ and is compatible with
       the Segment tracking protocol.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.june.so/docs/tracking/http-api/authentication
     baseURL: https://api.june.so/sdk
     tags:
@@ -54,7 +54,7 @@ apis:
       Pro Plan add-on API that allows embedding June analytics dashboards
       directly into customer-facing products, enabling teams to surface
       product metrics for individual accounts within their own applications.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://help.june.so/en/articles/9832226-api-documentation
     baseURL: https://api.june.so
     tags:
@@ -70,7 +70,7 @@ apis:
       API for managing data within the June platform, including the ability
       to delete users and workspaces to support GDPR and privacy compliance
       requirements.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://help.june.so/en/articles/9832226-api-documentation
     baseURL: https://api.june.so
     tags:
