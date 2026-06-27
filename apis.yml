@@ -94,7 +94,7 @@ common:
     url: https://x.com/juneDotSo
   - type: Blog
     url: https://www.june.so/blog
-  - type: Changelog
+  - type: ChangeLog
     url: https://changelog.june.so
   - type: Pricing
     url: https://www.june.so/pricing
