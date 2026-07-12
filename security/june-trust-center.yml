@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.june.so/security
+url: https://www.june.so/security
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://www.june.so/security
+  keywords:
+  - soc 2
+  - soc2
+  - gdpr

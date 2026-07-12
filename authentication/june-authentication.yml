@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/june-tracking-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Provide your workspace write key as the username via HTTP Basic Auth. Obtain
+    the write key from your June workspace settings.
+  sources:
+  - openapi/june-tracking-api-openapi.yml
