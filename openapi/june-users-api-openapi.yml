@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: June Tracking Companies Users API
+  description: 'REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.june.so/docs
+  termsOfService: https://www.june.so/privacy
+servers:
+- url: https://api.june.so/sdk
+  description: June Tracking API base
+security:
+- basicAuth: []
+tags:
+- name: Users
+paths:
+  /identify:
+    post:
+      operationId: identifyUser
+      summary: Identify a user
+      description: 'Identifies a user and associates traits (attributes) with them. The API checks for an email key first in the main payload, then in traits. At least one of userId or anonymousId must be included.
+
+        '
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentifyRequest'
+            example:
+              userId: user_12345
+              traits:
+                email: alice@example.com
+                name: Alice Smith
+                plan: pro
+      responses:
+        '200':
+          description: User identified successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request — missing required fields or malformed payload.
+        '401':
+          description: Unauthorized — invalid or missing write key.
+components:
+  schemas:
+    IdentifyRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
+
+            '
+          example: user_12345
+        anonymousId:
+          type: string
+          description: 'An ID for the user when identity is unknown. At least one of userId or anonymousId must be provided.
+
+            '
+          example: anon_abc123
+        traits:
+          type: object
+          description: 'A dictionary of user attributes such as email, name, company, etc. The API checks for an email key first in the main payload, then in traits.
+
+            '
+          additionalProperties: true
+          example:
+            email: alice@example.com
+            name: Alice Smith
+            plan: pro
+        timestamp:
+          type: string
+          format: date-time
+          description: 'ISO 8601 date-time string representing when identification occurred. Defaults to server time if omitted.
+
+            '
+          example: '2026-06-12T10:00:00Z'
+        context:
+          $ref: '#/components/schemas/Context'
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        success:
+          type: boolean
+          example: true
+    Context:
+      type: object
+      description: 'A dictionary of extra context to attach to the call. Differs from traits in that it is not user-specific attributes.
+
+        '
+      properties:
+        app:
+          type: object
+          description: Information about the application.
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+            build:
+              type: string
+        campaign:
+          type: object
+          description: UTM campaign parameters.
+          properties:
+            name:
+              type: string
+            source:
+              type: string
+            medium:
+              type: string
+            term:
+              type: string
+            content:
+              type: string
+        device:
+          type: object
+          description: Device information.
+          properties:
+            type:
+              type: string
+            manufacturer:
+              type: string
+            model:
+              type: string
+        ip:
+          type: string
+          description: The user's IP address.
+          example: 203.0.113.42
+        locale:
+          type: string
+          description: The locale of the user (e.g., en-US).
+          example: en-US
+        os:
+          type: object
+          description: Operating system information.
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+        referrer:
+          type: object
+          description: Referral information.
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            url:
+              type: string
+        screen:
+          type: object
+          description: Screen dimensions and density.
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+            density:
+              type: number
+        timezone:
+          type: string
+          description: The user's timezone in tzdata format.
+          example: America/New_York
+        groupId:
+          type: string
+          description: The group or company identifier to associate the event with.
+          example: company_67890
+      additionalProperties: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Provide your workspace write key as the username via HTTP Basic Auth. Obtain the write key from your June workspace settings.
+
+        '
