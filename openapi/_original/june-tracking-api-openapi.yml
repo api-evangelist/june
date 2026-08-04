@@ -1,0 +1,427 @@
+openapi: 3.0.3
+info:
+  title: June Tracking API
+  description: >
+    REST API for sending user behaviour data to June, including user identification,
+    event tracking, company grouping, and page view recording. Compatible with the
+    Segment tracking protocol. Uses Basic Authentication with a workspace write key.
+  version: 1.0.0
+  contact:
+    url: https://www.june.so/docs
+  termsOfService: https://www.june.so/privacy
+servers:
+  - url: https://api.june.so/sdk
+    description: June Tracking API base
+
+security:
+  - basicAuth: []
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >
+        Provide your workspace write key as the username via HTTP Basic Auth.
+        Obtain the write key from your June workspace settings.
+
+  schemas:
+    TrackRequest:
+      type: object
+      required:
+        - event
+      properties:
+        userId:
+          type: string
+          description: >
+            The ID for this user in your database. At least one of userId or
+            anonymousId must be provided.
+          example: "user_12345"
+        anonymousId:
+          type: string
+          description: >
+            An ID associated with the user when you do not know who they are.
+            At least one of userId or anonymousId must be provided.
+          example: "anon_abc123"
+        event:
+          type: string
+          description: The name of the event you are tracking.
+          example: "Signed Up"
+        properties:
+          type: object
+          description: A dictionary of properties for the event.
+          additionalProperties: true
+          example:
+            plan: "pro"
+            revenue: 99.0
+        timestamp:
+          type: string
+          format: date-time
+          description: >
+            ISO 8601 date-time string representing when the track took place.
+            Defaults to server time if omitted.
+          example: "2026-06-12T10:00:00Z"
+        context:
+          $ref: '#/components/schemas/Context'
+
+    IdentifyRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: >
+            The ID for this user in your database. At least one of userId or
+            anonymousId must be provided.
+          example: "user_12345"
+        anonymousId:
+          type: string
+          description: >
+            An ID for the user when identity is unknown. At least one of userId
+            or anonymousId must be provided.
+          example: "anon_abc123"
+        traits:
+          type: object
+          description: >
+            A dictionary of user attributes such as email, name, company, etc.
+            The API checks for an email key first in the main payload, then in traits.
+          additionalProperties: true
+          example:
+            email: "alice@example.com"
+            name: "Alice Smith"
+            plan: "pro"
+        timestamp:
+          type: string
+          format: date-time
+          description: >
+            ISO 8601 date-time string representing when identification occurred.
+            Defaults to server time if omitted.
+          example: "2026-06-12T10:00:00Z"
+        context:
+          $ref: '#/components/schemas/Context'
+
+    GroupRequest:
+      type: object
+      required:
+        - groupId
+      properties:
+        userId:
+          type: string
+          description: >
+            The ID for this user in your database. At least one of userId or
+            anonymousId must be provided.
+          example: "user_12345"
+        anonymousId:
+          type: string
+          description: >
+            An ID for the user when identity is unknown. At least one of userId
+            or anonymousId must be provided.
+          example: "anon_abc123"
+        groupId:
+          type: string
+          description: The identifier of the company or group.
+          example: "company_67890"
+        traits:
+          type: object
+          description: >
+            A dictionary of group/company attributes such as name, address,
+            or contact information.
+          additionalProperties: true
+          example:
+            name: "Acme Corp"
+            industry: "SaaS"
+            employees: 50
+        timestamp:
+          type: string
+          format: date-time
+          description: >
+            ISO 8601 date-time string representing when the group action occurred.
+            Defaults to server time if omitted.
+          example: "2026-06-12T10:00:00Z"
+        context:
+          $ref: '#/components/schemas/Context'
+
+    PageRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: >
+            The ID for this user in your database. At least one of userId or
+            anonymousId must be provided.
+          example: "user_12345"
+        anonymousId:
+          type: string
+          description: >
+            An ID for the user when identity is unknown. At least one of userId
+            or anonymousId must be provided.
+          example: "anon_abc123"
+        properties:
+          type: object
+          description: A dictionary of page properties.
+          properties:
+            url:
+              type: string
+              format: uri
+              description: The full URL of the current page.
+              example: "https://app.example.com/dashboard"
+            path:
+              type: string
+              description: The path portion of the URL.
+              example: "/dashboard"
+            title:
+              type: string
+              description: The title of the page.
+              example: "Dashboard"
+            referrer:
+              type: string
+              description: The referrer of the page.
+              example: "https://example.com/home"
+            search:
+              type: string
+              description: The search portion of the URL.
+              example: "?utm_source=email"
+          additionalProperties: true
+        timestamp:
+          type: string
+          format: date-time
+          description: >
+            ISO 8601 date-time string representing when the page view occurred.
+            Defaults to server time if omitted.
+          example: "2026-06-12T10:00:00Z"
+        context:
+          $ref: '#/components/schemas/Context'
+
+    Context:
+      type: object
+      description: >
+        A dictionary of extra context to attach to the call. Differs from traits
+        in that it is not user-specific attributes.
+      properties:
+        app:
+          type: object
+          description: Information about the application.
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+            build:
+              type: string
+        campaign:
+          type: object
+          description: UTM campaign parameters.
+          properties:
+            name:
+              type: string
+            source:
+              type: string
+            medium:
+              type: string
+            term:
+              type: string
+            content:
+              type: string
+        device:
+          type: object
+          description: Device information.
+          properties:
+            type:
+              type: string
+            manufacturer:
+              type: string
+            model:
+              type: string
+        ip:
+          type: string
+          description: The user's IP address.
+          example: "203.0.113.42"
+        locale:
+          type: string
+          description: The locale of the user (e.g., en-US).
+          example: "en-US"
+        os:
+          type: object
+          description: Operating system information.
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+        referrer:
+          type: object
+          description: Referral information.
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            url:
+              type: string
+        screen:
+          type: object
+          description: Screen dimensions and density.
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+            density:
+              type: number
+        timezone:
+          type: string
+          description: The user's timezone in tzdata format.
+          example: "America/New_York"
+        groupId:
+          type: string
+          description: The group or company identifier to associate the event with.
+          example: "company_67890"
+      additionalProperties: true
+
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        success:
+          type: boolean
+          example: true
+
+paths:
+  /track:
+    post:
+      operationId: trackEvent
+      summary: Track an event
+      description: >
+        Records a user action or event. At least one of userId or anonymousId
+        must be included. Use the context.groupId field to associate events with
+        a company or group.
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackRequest'
+            example:
+              userId: "user_12345"
+              event: "Signed Up"
+              properties:
+                plan: "pro"
+              context:
+                groupId: "company_67890"
+      responses:
+        '200':
+          description: Event tracked successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request — missing required fields or malformed payload.
+        '401':
+          description: Unauthorized — invalid or missing write key.
+
+  /identify:
+    post:
+      operationId: identifyUser
+      summary: Identify a user
+      description: >
+        Identifies a user and associates traits (attributes) with them. The API
+        checks for an email key first in the main payload, then in traits. At
+        least one of userId or anonymousId must be included.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentifyRequest'
+            example:
+              userId: "user_12345"
+              traits:
+                email: "alice@example.com"
+                name: "Alice Smith"
+                plan: "pro"
+      responses:
+        '200':
+          description: User identified successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request — missing required fields or malformed payload.
+        '401':
+          description: Unauthorized — invalid or missing write key.
+
+  /group:
+    post:
+      operationId: groupUser
+      summary: Associate a user with a company or group
+      description: >
+        Associates a user with a company or group and sets traits on that group.
+        At least one of userId or anonymousId must be included, and groupId is
+        required.
+      tags:
+        - Companies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+            example:
+              userId: "user_12345"
+              groupId: "company_67890"
+              traits:
+                name: "Acme Corp"
+                industry: "SaaS"
+                employees: 50
+      responses:
+        '200':
+          description: User grouped successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request — missing required fields or malformed payload.
+        '401':
+          description: Unauthorized — invalid or missing write key.
+
+  /page:
+    post:
+      operationId: recordPageView
+      summary: Record a page view
+      description: >
+        Records a page view event. At least one of userId or anonymousId must
+        be included. Use the properties object to pass URL, path, title,
+        referrer, and search data.
+      tags:
+        - Page Views
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageRequest'
+            example:
+              userId: "user_12345"
+              properties:
+                url: "https://app.example.com/dashboard"
+                path: "/dashboard"
+                title: "Dashboard"
+      responses:
+        '200':
+          description: Page view recorded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request — missing required fields or malformed payload.
+        '401':
+          description: Unauthorized — invalid or missing write key.

@@ -1,0 +1,20 @@
+{
+  "provider": "june",
+  "sources": [
+    "june-companies-api-openapi.yml",
+    "june-events-api-openapi.yml",
+    "june-page-views-api-openapi.yml",
+    "june-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "june-companies-api-openapi.yml",
+    "june-events-api-openapi.yml",
+    "june-page-views-api-openapi.yml",
+    "june-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
