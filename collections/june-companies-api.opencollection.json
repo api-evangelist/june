@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "June Tracking Companies API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Associate a user with a company or group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.june.so/sdk/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associates a user with a company or group and sets traits on that group. At least one of userId or anonymousId must be included, and groupId is required.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

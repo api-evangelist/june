@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "883e5b47-9c2c-4db7-8d6c-bbfe2586f5b2",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b5cb15c-ee28-42dd-aee8-0bbc2bf39008",
+          "name": "Track an event",
+          "request": {
+            "name": "Track an event",
+            "description": {
+              "content": "Records a user action or event. At least one of userId or anonymousId must be included. Use the context.groupId field to associate events with a company or group.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 6465.710329114669\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"key_0\": 6910\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb26ce36-bb91-4039-b5d6-be1377015ec1",
+              "name": "Event tracked successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"event\": \"Signed Up\",\n  \"properties\": {\n    \"plan\": \"pro\"\n  },\n  \"context\": {\n    \"groupId\": \"company_67890\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f513d4f0-3801-432b-8f2d-e8203753f68c",
+              "name": "Bad request — missing required fields or malformed payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"event\": \"Signed Up\",\n  \"properties\": {\n    \"plan\": \"pro\"\n  },\n  \"context\": {\n    \"groupId\": \"company_67890\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13bbc5c6-53a9-4084-8b98-e5836d99c4a5",
+              "name": "Unauthorized — invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"event\": \"Signed Up\",\n  \"properties\": {\n    \"plan\": \"pro\"\n  },\n  \"context\": {\n    \"groupId\": \"company_67890\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.june.so/sdk",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0155e043-997a-4ba3-8389-e513d3b6ad76",
+    "name": "June Tracking Companies Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.\n",
+      "type": "text/plain"
+    }
+  }
+}

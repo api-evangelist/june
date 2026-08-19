@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "June Tracking Companies Users API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.june.so/sdk/identify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Identifies a user and associates traits (attributes) with them. The API checks for an email key first in the main payload, then in traits. At least one of userId or anonymousId must be included.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

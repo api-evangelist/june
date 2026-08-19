@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "b62f0f96-04cb-4439-affe-9282078daf30",
+      "name": "Companies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab34ea8a-27b0-46ee-88e3-bb383e5c4fe6",
+          "name": "Associate a user with a company or group",
+          "request": {
+            "name": "Associate a user with a company or group",
+            "description": {
+              "content": "Associates a user with a company or group and sets traits on that group. At least one of userId or anonymousId must be included, and groupId is required.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": \"string\",\n    \"key_1\": false,\n    \"key_2\": \"string\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"key_0\": 5079\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d205c291-c27e-4cff-8648-30eeb417317c",
+              "name": "User grouped successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"groupId\": \"company_67890\",\n  \"traits\": {\n    \"name\": \"Acme Corp\",\n    \"industry\": \"SaaS\",\n    \"employees\": 50\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5186bd49-38e0-42ad-986e-ac0837a35c91",
+              "name": "Bad request — missing required fields or malformed payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"groupId\": \"company_67890\",\n  \"traits\": {\n    \"name\": \"Acme Corp\",\n    \"industry\": \"SaaS\",\n    \"employees\": 50\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ac3353a-5a93-43c1-b608-f678797418b3",
+              "name": "Unauthorized — invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"groupId\": \"company_67890\",\n  \"traits\": {\n    \"name\": \"Acme Corp\",\n    \"industry\": \"SaaS\",\n    \"employees\": 50\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.june.so/sdk",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "077ff7a0-b022-4780-a7bb-6267f0f6a188",
+    "name": "June Tracking Companies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.\n",
+      "type": "text/plain"
+    }
+  }
+}

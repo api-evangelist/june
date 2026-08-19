@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "91441fdd-3ba8-4119-9cd8-e597ba53864b",
+      "name": "Page Views",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6c88ac2-b0d8-4331-afc3-4447f65c74cb",
+          "name": "Record a page view",
+          "request": {
+            "name": "Record a page view",
+            "description": {
+              "content": "Records a page view event. At least one of userId or anonymousId must be included. Use the properties object to pass URL, path, title, referrer, and search data.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"url\": \"<uri>\",\n    \"path\": \"<string>\",\n    \"title\": \"<string>\",\n    \"referrer\": \"<string>\",\n    \"search\": \"<string>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18575e46-529a-454d-8cb6-a2b57fba5aa3",
+              "name": "Page view recorded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"properties\": {\n    \"url\": \"https://app.example.com/dashboard\",\n    \"path\": \"/dashboard\",\n    \"title\": \"Dashboard\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bcc0664-e58c-40df-a3b6-67fc81180d32",
+              "name": "Bad request — missing required fields or malformed payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"properties\": {\n    \"url\": \"https://app.example.com/dashboard\",\n    \"path\": \"/dashboard\",\n    \"title\": \"Dashboard\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2a1c4ae-346d-4b17-9520-ba3b66d78c81",
+              "name": "Unauthorized — invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"properties\": {\n    \"url\": \"https://app.example.com/dashboard\",\n    \"path\": \"/dashboard\",\n    \"title\": \"Dashboard\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.june.so/sdk",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8d82b9d1-70ed-4a23-8ee0-7b347fd05c0a",
+    "name": "June Tracking Companies Page Views API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.\n",
+      "type": "text/plain"
+    }
+  }
+}

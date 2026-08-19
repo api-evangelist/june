@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "June Tracking Companies Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.june.so/sdk/track",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a user action or event. At least one of userId or anonymousId must be included. Use the context.groupId field to associate events with a company or group.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

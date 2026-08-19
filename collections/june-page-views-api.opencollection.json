@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "June Tracking Companies Page Views API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Record a page view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.june.so/sdk/page",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a page view event. At least one of userId or anonymousId must be included. Use the properties object to pass URL, path, title, referrer, and search data.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

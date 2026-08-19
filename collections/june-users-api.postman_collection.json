@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "a65dd5c5-8152-4950-96f7-495d0d1eff7b",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "291669cb-a299-452b-8899-bc478e4f500a",
+          "name": "Identify a user",
+          "request": {
+            "name": "Identify a user",
+            "description": {
+              "content": "Identifies a user and associates traits (attributes) with them. The API checks for an email key first in the main payload, then in traits. At least one of userId or anonymousId must be included.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": 3159,\n    \"key_1\": 2485.9850658425385\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f392ecfc-a959-4160-a65f-7944a58cb248",
+              "name": "User identified successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"traits\": {\n    \"email\": \"alice@example.com\",\n    \"name\": \"Alice Smith\",\n    \"plan\": \"pro\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d57ca5d-d2ee-40f1-9fbb-804f2183c4a3",
+              "name": "Bad request — missing required fields or malformed payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"traits\": {\n    \"email\": \"alice@example.com\",\n    \"name\": \"Alice Smith\",\n    \"plan\": \"pro\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbab8e19-0bfc-4ff9-8277-859f31bd5c52",
+              "name": "Unauthorized — invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"user_12345\",\n  \"traits\": {\n    \"email\": \"alice@example.com\",\n    \"name\": \"Alice Smith\",\n    \"plan\": \"pro\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.june.so/sdk",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b6fda290-5a29-4852-b138-d53cccf5950d",
+    "name": "June Tracking Companies Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.\n",
+      "type": "text/plain"
+    }
+  }
+}
