@@ -89,6 +89,8 @@ apis:
   humanURL: https://www.june.so/docs/tracking/http-api/authentication
   baseURL: https://api.june.so/sdk
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -113,6 +115,8 @@ apis:
   humanURL: https://www.june.so/docs/tracking/http-api/authentication
   baseURL: https://api.june.so/sdk
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
