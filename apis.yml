@@ -12,6 +12,18 @@ description: >
   into customer-facing products, and a Data Deletions API supports GDPR
   compliance by enabling deletion of user and workspace data.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
