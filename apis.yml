@@ -109,18 +109,6 @@ apis:
     url: openapi/june-events-api-openapi.yml
   - type: Documentation
     url: https://www.june.so/docs/tracking/http-api/authentication
-- aid: june:june-page-views-api
-  name: June Page Views API
-  description: The Page Views API from June — 1 operation(s) for page views.
-  humanURL: https://www.june.so/docs/tracking/http-api/authentication
-  baseURL: https://api.june.so/sdk
-  tags:
-  - Page Views
-  properties:
-  - type: OpenAPI
-    url: openapi/june-page-views-api-openapi.yml
-  - type: Documentation
-    url: https://www.june.so/docs/tracking/http-api/authentication
 - aid: june:june-users-api
   name: June Users API
   description: The Users API from June — 1 operation(s) for users.
@@ -133,6 +121,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/june-users-api-openapi.yml
+  - type: Documentation
+    url: https://www.june.so/docs/tracking/http-api/authentication
+- aid: june:june-pageviews-api
+  name: June Pageviews API
+  description: The Pageviews API from June — 1 operation(s) for pageviews.
+  humanURL: https://help.june.so/en/articles/9832226-api-documentation
+  baseURL: https://api.june.so
+  tags:
+  - Pageviews
+  properties:
+  - type: OpenAPI
+    url: openapi/june-pageviews-api-openapi.yml
   - type: Documentation
     url: https://www.june.so/docs/tracking/http-api/authentication
 common:
