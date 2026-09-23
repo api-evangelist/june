@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: June Tracking Companies Page Views API
-  description: 'REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.
-
-    '
+  title: June Tracking Page Views API
+  description: REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.
   version: 1.0.0
   contact:
     url: https://www.june.so/docs
@@ -14,17 +12,15 @@ servers:
 security:
 - basicAuth: []
 tags:
-- name: Page Views
+- name: Pageviews
 paths:
   /page:
     post:
       operationId: recordPageView
       summary: Record a page view
-      description: 'Records a page view event. At least one of userId or anonymousId must be included. Use the properties object to pass URL, path, title, referrer, and search data.
-
-        '
+      description: Records a page view event. At least one of userId or anonymousId must be included. Use the properties object to pass URL, path, title, referrer, and search data.
       tags:
-      - Page Views
+      - Pageviews
       requestBody:
         required: true
         content:
@@ -50,65 +46,6 @@ paths:
           description: Unauthorized — invalid or missing write key.
 components:
   schemas:
-    PageRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
-
-            '
-          example: user_12345
-        anonymousId:
-          type: string
-          description: 'An ID for the user when identity is unknown. At least one of userId or anonymousId must be provided.
-
-            '
-          example: anon_abc123
-        properties:
-          type: object
-          description: A dictionary of page properties.
-          properties:
-            url:
-              type: string
-              format: uri
-              description: The full URL of the current page.
-              example: https://app.example.com/dashboard
-            path:
-              type: string
-              description: The path portion of the URL.
-              example: /dashboard
-            title:
-              type: string
-              description: The title of the page.
-              example: Dashboard
-            referrer:
-              type: string
-              description: The referrer of the page.
-              example: https://example.com/home
-            search:
-              type: string
-              description: The search portion of the URL.
-              example: ?utm_source=email
-          additionalProperties: true
-        timestamp:
-          type: string
-          format: date-time
-          description: 'ISO 8601 date-time string representing when the page view occurred. Defaults to server time if omitted.
-
-            '
-          example: '2026-06-12T10:00:00Z'
-        context:
-          $ref: '#/components/schemas/Context'
-    SuccessResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        success:
-          type: boolean
-          example: true
     Context:
       type: object
       description: 'A dictionary of extra context to attach to the call. Differs from traits in that it is not user-specific attributes.
@@ -194,6 +131,65 @@ components:
           description: The group or company identifier to associate the event with.
           example: company_67890
       additionalProperties: true
+    PageRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
+
+            '
+          example: user_12345
+        anonymousId:
+          type: string
+          description: 'An ID for the user when identity is unknown. At least one of userId or anonymousId must be provided.
+
+            '
+          example: anon_abc123
+        properties:
+          type: object
+          description: A dictionary of page properties.
+          properties:
+            url:
+              type: string
+              format: uri
+              description: The full URL of the current page.
+              example: https://app.example.com/dashboard
+            path:
+              type: string
+              description: The path portion of the URL.
+              example: /dashboard
+            title:
+              type: string
+              description: The title of the page.
+              example: Dashboard
+            referrer:
+              type: string
+              description: The referrer of the page.
+              example: https://example.com/home
+            search:
+              type: string
+              description: The search portion of the URL.
+              example: ?utm_source=email
+          additionalProperties: true
+        timestamp:
+          type: string
+          format: date-time
+          description: 'ISO 8601 date-time string representing when the page view occurred. Defaults to server time if omitted.
+
+            '
+          example: '2026-06-12T10:00:00Z'
+        context:
+          $ref: '#/components/schemas/Context'
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        success:
+          type: boolean
+          example: true
   securitySchemes:
     basicAuth:
       type: http

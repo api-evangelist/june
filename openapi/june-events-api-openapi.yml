@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: June Tracking Companies Events API
-  description: 'REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.
-
-    '
+  title: June Tracking Events API
+  description: REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.
   version: 1.0.0
   contact:
     url: https://www.june.so/docs
@@ -20,9 +18,7 @@ paths:
     post:
       operationId: trackEvent
       summary: Track an event
-      description: 'Records a user action or event. At least one of userId or anonymousId must be included. Use the context.groupId field to associate events with a company or group.
-
-        '
+      description: Records a user action or event. At least one of userId or anonymousId must be included. Use the context.groupId field to associate events with a company or group.
       tags:
       - Events
       requestBody:
@@ -88,15 +84,6 @@ components:
           example: '2026-06-12T10:00:00Z'
         context:
           $ref: '#/components/schemas/Context'
-    SuccessResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        success:
-          type: boolean
-          example: true
     Context:
       type: object
       description: 'A dictionary of extra context to attach to the call. Differs from traits in that it is not user-specific attributes.
@@ -182,6 +169,15 @@ components:
           description: The group or company identifier to associate the event with.
           example: company_67890
       additionalProperties: true
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        success:
+          type: boolean
+          example: true
   securitySchemes:
     basicAuth:
       type: http
