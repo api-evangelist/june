@@ -46,40 +46,6 @@ paths:
           description: Unauthorized — invalid or missing write key.
 components:
   schemas:
-    IdentifyRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
-
-            '
-          example: user_12345
-        anonymousId:
-          type: string
-          description: 'An ID for the user when identity is unknown. At least one of userId or anonymousId must be provided.
-
-            '
-          example: anon_abc123
-        traits:
-          type: object
-          description: 'A dictionary of user attributes such as email, name, company, etc. The API checks for an email key first in the main payload, then in traits.
-
-            '
-          additionalProperties: true
-          example:
-            email: alice@example.com
-            name: Alice Smith
-            plan: pro
-        timestamp:
-          type: string
-          format: date-time
-          description: 'ISO 8601 date-time string representing when identification occurred. Defaults to server time if omitted.
-
-            '
-          example: '2026-06-12T10:00:00Z'
-        context:
-          $ref: '#/components/schemas/Context'
     Context:
       type: object
       description: 'A dictionary of extra context to attach to the call. Differs from traits in that it is not user-specific attributes.
@@ -174,6 +140,40 @@ components:
         success:
           type: boolean
           example: true
+    IdentifyRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
+
+            '
+          example: user_12345
+        anonymousId:
+          type: string
+          description: 'An ID for the user when identity is unknown. At least one of userId or anonymousId must be provided.
+
+            '
+          example: anon_abc123
+        traits:
+          type: object
+          description: 'A dictionary of user attributes such as email, name, company, etc. The API checks for an email key first in the main payload, then in traits.
+
+            '
+          additionalProperties: true
+          example:
+            email: alice@example.com
+            name: Alice Smith
+            plan: pro
+        timestamp:
+          type: string
+          format: date-time
+          description: 'ISO 8601 date-time string representing when identification occurred. Defaults to server time if omitted.
+
+            '
+          example: '2026-06-12T10:00:00Z'
+        context:
+          $ref: '#/components/schemas/Context'
   securitySchemes:
     basicAuth:
       type: http
