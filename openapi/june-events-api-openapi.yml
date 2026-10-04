@@ -47,52 +47,6 @@ paths:
           description: Unauthorized — invalid or missing write key.
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        success:
-          type: boolean
-          example: true
-    TrackRequest:
-      type: object
-      required:
-      - event
-      properties:
-        userId:
-          type: string
-          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
-
-            '
-          example: user_12345
-        anonymousId:
-          type: string
-          description: 'An ID associated with the user when you do not know who they are. At least one of userId or anonymousId must be provided.
-
-            '
-          example: anon_abc123
-        event:
-          type: string
-          description: The name of the event you are tracking.
-          example: Signed Up
-        properties:
-          type: object
-          description: A dictionary of properties for the event.
-          additionalProperties: true
-          example:
-            plan: pro
-            revenue: 99.0
-        timestamp:
-          type: string
-          format: date-time
-          description: 'ISO 8601 date-time string representing when the track took place. Defaults to server time if omitted.
-
-            '
-          example: '2026-06-12T10:00:00Z'
-        context:
-          $ref: '#/components/schemas/Context'
     Context:
       type: object
       description: 'A dictionary of extra context to attach to the call. Differs from traits in that it is not user-specific attributes.
@@ -178,6 +132,52 @@ components:
           description: The group or company identifier to associate the event with.
           example: company_67890
       additionalProperties: true
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        success:
+          type: boolean
+          example: true
+    TrackRequest:
+      type: object
+      required:
+      - event
+      properties:
+        userId:
+          type: string
+          description: 'The ID for this user in your database. At least one of userId or anonymousId must be provided.
+
+            '
+          example: user_12345
+        anonymousId:
+          type: string
+          description: 'An ID associated with the user when you do not know who they are. At least one of userId or anonymousId must be provided.
+
+            '
+          example: anon_abc123
+        event:
+          type: string
+          description: The name of the event you are tracking.
+          example: Signed Up
+        properties:
+          type: object
+          description: A dictionary of properties for the event.
+          additionalProperties: true
+          example:
+            plan: pro
+            revenue: 99.0
+        timestamp:
+          type: string
+          format: date-time
+          description: 'ISO 8601 date-time string representing when the track took place. Defaults to server time if omitted.
+
+            '
+          example: '2026-06-12T10:00:00Z'
+        context:
+          $ref: '#/components/schemas/Context'
   securitySchemes:
     basicAuth:
       type: http

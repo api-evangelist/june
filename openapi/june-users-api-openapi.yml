@@ -46,15 +46,6 @@ paths:
           description: Unauthorized — invalid or missing write key.
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        success:
-          type: boolean
-          example: true
     IdentifyRequest:
       type: object
       properties:
@@ -174,6 +165,15 @@ components:
           description: The group or company identifier to associate the event with.
           example: company_67890
       additionalProperties: true
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        success:
+          type: boolean
+          example: true
   securitySchemes:
     basicAuth:
       type: http

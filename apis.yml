@@ -129,8 +129,6 @@ apis:
   humanURL: https://help.june.so/en/articles/9832226-api-documentation
   baseURL: https://api.june.so
   tags:
-  - Page Views
-  tags_raw:
   - Pageviews
   properties:
   - type: OpenAPI
