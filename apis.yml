@@ -129,6 +129,8 @@ apis:
   humanURL: https://help.june.so/en/articles/9832226-api-documentation
   baseURL: https://api.june.so
   tags:
+  - Page Views
+  tags_raw:
   - Pageviews
   properties:
   - type: OpenAPI
@@ -136,6 +138,9 @@ apis:
   - type: Documentation
     url: https://www.june.so/docs/tracking/http-api/authentication
 common:
+  - type: CapabilityMap
+    url: capabilities/june-capability-edges.yml
+    name: June Business Capability Map
   - type: AgenticAccess
     url: agentic-access/june-agentic-access.yml
   - type: TrustCenter
