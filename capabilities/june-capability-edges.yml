@@ -1,0 +1,51 @@
+slug: june
+provider: June
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Events
+  spec_file: june-events-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.85
+  evidence: POST /track trackEvent 'Track an event'; 'REST API for sending user behaviour data to June'
+  reason: Product usage event capture from client/server runtimes is Product Telemetry Instrumentation.
+- tag: Pageviews
+  spec_file: june-pageviews-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.8
+  evidence: POST /page recordPageView 'Record a page view'
+  reason: Page-view capture into a product analytics platform is product usage telemetry instrumentation.
+- tag: Users
+  spec_file: june-users-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.8
+  evidence: '"REST API for sending user behaviour data to June, including user identification, event tracking";
+    operation POST /identify "Identify a user"'
+  reason: June is a product analytics platform; the Users tag exposes the identify call that instruments
+    product usage telemetry (user identity attached to behavioural events), i.e. product telemetry capture
+    rather than customer master data or CRM.
+- tag: Companies
+  spec_file: june-companies-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.7
+  evidence: POST /group groupUser 'Associate a user with a company or group'; schema GroupRequest
+  reason: Segment-compatible tracking call that attaches account context to product usage events — telemetry
+    instrumentation, not CRM account management.
