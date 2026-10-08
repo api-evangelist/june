@@ -85,3 +85,21 @@ plans:
         enabled: false
         addOn: true
         contact: https://www.june.so/pricing
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Free Trial
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: MAU-Based Plan
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
