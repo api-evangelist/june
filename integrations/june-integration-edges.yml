@@ -30,7 +30,25 @@ edges:
       - Track
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A01H5FBEJAH-june
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - June
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 method: searched
 checked:
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/june
+- slack/integrations/slack-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/june
