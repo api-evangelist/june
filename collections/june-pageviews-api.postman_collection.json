@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "0baf8238-b32e-4cd1-a3d4-96033b18d657",
+    "name": "June Tracking Page Views API",
+    "description": "REST API for sending user behaviour data to June, including user identification, event tracking, company grouping, and page view recording. Compatible with the Segment tracking protocol. Uses Basic Authentication with a workspace write key.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:20:17.000Z",
+    "updatedAt": "2026-10-22T02:20:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0baf8238-b32e-4cd1-a3d4-96033b18d657"
+  },
+  "item": [
+    {
+      "name": "page",
+      "item": [
+        {
+          "name": "Record a page view",
+          "id": "0a2e4377-33b8-4867-9599-6b0095ca6918",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"url\": \"<uri>\",\n    \"path\": \"<string>\",\n    \"title\": \"<string>\",\n    \"referrer\": \"<string>\",\n    \"search\": \"<string>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "page"
+              ]
+            },
+            "description": "Records a page view event. At least one of userId or anonymousId must be included. Use the properties object to pass URL, path, title, referrer, and search data."
+          },
+          "response": [
+            {
+              "id": "d7f79caf-d6b3-42a9-b4f4-3e15f9822ff3",
+              "name": "Page view recorded successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"url\": \"<uri>\",\n    \"path\": \"<string>\",\n    \"title\": \"<string>\",\n    \"referrer\": \"<string>\",\n    \"search\": \"<string>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/page",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "page"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"success\": \"<boolean>\"\n}",
+              "createdAt": "2026-10-22T02:20:17.000Z",
+              "updatedAt": "2026-10-22T02:20:17.000Z",
+              "uid": "35240-d7f79caf-d6b3-42a9-b4f4-3e15f9822ff3"
+            },
+            {
+              "id": "52601d2d-f6ce-4fae-a1b3-1f7f41e02ebc",
+              "name": "Bad request \u2014 missing required fields or malformed payload.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"url\": \"<uri>\",\n    \"path\": \"<string>\",\n    \"title\": \"<string>\",\n    \"referrer\": \"<string>\",\n    \"search\": \"<string>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/page",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "page"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:20:17.000Z",
+              "updatedAt": "2026-10-22T02:20:17.000Z",
+              "uid": "35240-52601d2d-f6ce-4fae-a1b3-1f7f41e02ebc"
+            },
+            {
+              "id": "d0f775b8-e664-4e90-976c-79b2f90eb095",
+              "name": "Unauthorized \u2014 invalid or missing write key.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"url\": \"<uri>\",\n    \"path\": \"<string>\",\n    \"title\": \"<string>\",\n    \"referrer\": \"<string>\",\n    \"search\": \"<string>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"context\": {\n    \"app\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"build\": \"<string>\"\n    },\n    \"campaign\": {\n      \"name\": \"<string>\",\n      \"source\": \"<string>\",\n      \"medium\": \"<string>\",\n      \"term\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    \"device\": {\n      \"type\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\"\n    },\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"referrer\": {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"screen\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"density\": \"<number>\"\n    },\n    \"timezone\": \"<string>\",\n    \"groupId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/page",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "page"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:20:17.000Z",
+              "updatedAt": "2026-10-22T02:20:17.000Z",
+              "uid": "35240-d0f775b8-e664-4e90-976c-79b2f90eb095"
+            }
+          ],
+          "createdAt": "2026-10-22T02:20:17.000Z",
+          "updatedAt": "2026-10-22T02:20:17.000Z",
+          "uid": "35240-0a2e4377-33b8-4867-9599-6b0095ca6918"
+        }
+      ],
+      "id": "7a09126b-e562-4247-9170-fb8c86fa80e5",
+      "createdAt": "2026-10-22T02:20:17.000Z",
+      "updatedAt": "2026-10-22T02:20:17.000Z",
+      "uid": "35240-7a09126b-e562-4247-9170-fb8c86fa80e5"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.june.so/sdk"
+    }
+  ]
+}
